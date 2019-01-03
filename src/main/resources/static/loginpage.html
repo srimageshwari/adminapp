@@ -1,0 +1,51 @@
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+<script>
+    function validation()
+    {
+        if($("#User").val()=="")
+        {
+            alert("Please fill User ID");
+            $("#User").focus();
+            return false;
+        }
+
+        if($("#pass").val()=="")
+        {
+            alert("Please fill Password");
+            $("#pass").focus();
+            return false;
+        }
+        getvalue();
+    }
+
+</script>
+<h2 style="padding: 10px;padding-left: 525px;"><b>Admin app</b></h2>
+<div style="padding: 65px;background: dodgerblue;margin: 73px 35% 0px 27%;">
+    <form name="form" action="welcome" method="post" >
+        <table>
+            <tr>
+                <td> <label><b>UserName</b></label></td>
+                <td><input id="User" type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>  <label><b>password</b></label></td>
+                <td> <input id="pass" type="password" name="password"></td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+                <td> <input type="submit" onclick="validation()" value="Login">  </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

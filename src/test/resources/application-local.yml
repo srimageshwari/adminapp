@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    username: testUser
+    url: jdbc:sqlserver://localhost:1433;databaseName=Product_DB
+    password: testUser

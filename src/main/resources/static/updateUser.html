@@ -1,0 +1,93 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+<script>
+
+function updateval()
+{
+    var productId=$("#UserId").val();
+    var customerInfo = {
+        name: document.getElementById("Name").value,
+        address: document.getElementById("Address").value,
+        city: document.getElementById("City").value1
+
+    }
+
+var urllink="http://localhost:8080/updateuser/"+productId+"";
+    $.ajax({
+        url: urllink,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/json");
+        },
+        type: "PUT",
+        dataType: "json",
+        data: JSON.stringify(customerInfo),
+        success: function (result) {
+
+        }
+    });
+    event.preventDefault();
+    alert("updated");
+}
+
+function getval(id) {
+    alert( id.value );
+    var productId=id.value;
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/getuser/"+productId+"",
+        success: function (result) {
+            console.log(result);
+            for (var i in result) {
+            $("#Name").val( result.name);
+            $("#Address").val(result.address);
+            $("#City").val(result.city);
+            }
+            var id= $("#UserId").val();
+
+        }
+    });
+}
+
+</script>
+
+<h2 style="padding: 10px;padding-left: 492px;"><b></b></h2>
+
+<div style="padding: 65px;background: dodgerblue;margin: 73px 13% 0px 27%;">
+
+    <label style="color:White;font-size:34px;padding-left: 160px;"><b></b></label>
+    <br>
+    <table id="myTable">
+        <colgroup>
+            <col style="width: 125px">
+            <col style="width: 86px">
+            <col style="width: 90px">
+            <col style="width: 96px">
+            <col style="width: 91px">
+            <col style="width: 91px">
+        </colgroup>
+        <tr>
+            <th style="border-color:#333333" >User Id</th>
+            <th style="border-color:#333333" >Name</th>
+            <th style="border-color:#333333" >Address</th>
+            <th style="border-color:#333333"> City</th>
+        </tr>
+        <tr>
+            <td style="border-color:#333333"><select onchange="getval(this);" id="UserId"><option value="1">1</option>  <option value="2">2</option>  <option value="3">3</option>  <option value="4">4</option></select></td>
+            <td style="border-color:#333333"><input style="padding-left: 10px;" id="Name" type="text"></td>
+            <td style="border-color:#333333"><input style="padding-left: 10px;" id="Address" type="text"></td>
+            <td  style="border-color:#333333"><input style="padding-left: 10px;" id="City" type="text"></td>
+
+            <td><input id="save" type="Button" onclick="updateval();" value="save">  </td>
+        </tr>
+
+    </table>
+
+ </div>
+
+ </body>
